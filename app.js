@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid')
     const doodler = document.createElement('div')
     let isGamerOver = false
-    let speed = 3
-    let doodlerLeftSpace = 50
+    let doodlerLeftSpace = 80
     let startPoint = 150
     let doodlerBottomSpace = startPoint
     let platformCount = 5
@@ -15,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isGoingRight = false
     let leftTimerId
     let rightTimerId
-    let score = 0
+    let score = -1
     
 
     function createDoodler(){
@@ -157,6 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
         isGoingLeft = false
         clearInterval(rightTimerId)
         clearInterval(leftTimerId)
+        clearInterval(leftTimerId)
+        clearInterval(rightTimerId)
     }
 
     function control(e) {
@@ -168,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
             moveStraight()
         }
     }
-
 
     function start() {
         if (!isGamerOver) {

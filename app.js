@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid')
     const doodler = document.createElement('div')
     let isGamerOver = false
-    let doodlerLeftSpace = 80
+    let doodlerLeftSpace = 1000
     let startPoint = 150
     let doodlerBottomSpace = startPoint
     let platformCount = 5
@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let leftTimerId
     let rightTimerId
     let score = -1
-    
 
     function createDoodler(){
         grid.appendChild(doodler)
@@ -23,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         doodlerLeftSpace = platforms[0].left
         doodler.style.left = doodlerLeftSpace + 'px'
         doodler.style.bottom = doodlerBottomSpace + 'px'
-
     }
 
     class Platform {
@@ -69,6 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
     }
+
+    
 
     function jump() {
         clearInterval(downTimerId)
@@ -116,10 +116,17 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.removeChild(grid.firstChild)
         }
         grid.innerHTML = score
+       
         clearInterval(upTimerId)
         clearInterval(downTimerId)
         clearInterval(leftTimerId)
         clearInterval(rightTimerId)
+       
+         if(isGamerOver = true){
+            grid.style.backgroundImage="url('backgrounds/game-over.png')";
+         }else{
+            grid.style.backgroundImage="url('backgrounds/background-up.png')";
+         }
     }
 
     function moveLeft() {
@@ -156,8 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
         isGoingLeft = false
         clearInterval(rightTimerId)
         clearInterval(leftTimerId)
-        clearInterval(leftTimerId)
-        clearInterval(rightTimerId)
     }
 
     function control(e) {
@@ -168,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (e.key === "ArrowUp") {
             moveStraight()
         }
-    }
+    }   
 
     function start() {
         if (!isGamerOver) {
@@ -177,10 +182,13 @@ document.addEventListener('DOMContentLoaded', () => {
             setInterval(movePlatforms,30)
             jump()
             document.addEventListener('keyup', control)
-
         }
     }
+
+    
+
     //attach to button
     start()
 
+    
 })

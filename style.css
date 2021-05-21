@@ -5,7 +5,7 @@ body{
 .grid  {
     width: 400px;
     height: 600px;
-    background-image: url(background.jpg);  
+    background-image: url(backgrounds/background-up.png);  
     position: relative;
     font-size: 100px;
     text-align: center;

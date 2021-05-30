@@ -73,12 +73,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function jump() {
         clearInterval(downTimerId)
         isJumping = true
+        isGoingRight = false
+        isGoingLeft = false
+        clearInterval(rightTimerId)
+        clearInterval(leftTimerId)
         upTimerId = setInterval(function () {
             doodlerBottomSpace += 20
             doodler.style.bottom = doodlerBottomSpace + 'px'
             if (doodlerBottomSpace > startPoint + 200) {
                 fall()
             }
+            
         },30)
     }
 
@@ -100,10 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     (doodlerLeftSpace <= (platform.left + 85)) &&
                     !isJumping
                 ) {
-                    console.log('landed')
                     startPoint = doodlerBottomSpace
                     jump()
                 }
+
             })
 
         },30)
@@ -124,9 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
        
          if(isGamerOver = true){
             grid.style.backgroundImage="url('backgrounds/game-over.png')";
-         }else{
-            grid.style.backgroundImage="url('backgrounds/background-up.png')";
-         }
+         } 
     }
 
     function moveLeft() {
@@ -190,5 +193,4 @@ document.addEventListener('DOMContentLoaded', () => {
     //attach to button
     start()
 
-    
 })
